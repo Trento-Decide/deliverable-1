@@ -21,12 +21,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un utente anonimo accede alla piattaforma tramite credenziali locali oppure tramite SPID o CIE\@.
 
-	\item[Precondizioni:]
-	L’utente non è autenticato.
-
-	\item[Postcondizioni:]
-	L’utente risulta autenticato e accede alla piattaforma.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’utente visualizza la schermata di login.
@@ -58,12 +52,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un utente anonimo registra un nuovo account cittadino tramite SPID o CIE e definisce le proprie credenziali locali.
 
-	\item[Precondizioni:]
-	L’utente non possiede ancora un account sulla piattaforma.
-
-	\item[Postcondizioni:]
-	Un nuovo account cittadino è creato e attivo; le credenziali locali risultano configurate.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’utente visualizza la schermata di registrazione.
@@ -87,6 +75,11 @@
 		\item Il sistema invia una email di verifica all'indirizzo immesso dall'utente, dove è richiesta la conferma della creazione dell'account \textbf{[eccezione 3]} \textbf{[eccezione 4]}.
 		\item Il sistema invia una email di conferma.
 	\end{enumerate}
+	
+		\item[Estensioni:]~
+	\begin{itemize}
+		\item[(0)] L'utente può esprimere una preferenza in merito alla ricezione di notifiche 
+	\end{itemize}
 
 	\item[Eccezioni:]~
 	\begin{itemize}
@@ -110,12 +103,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un utente autenticato possa eseguire il logout dalla piattaforma, ovvero terminare la propria sessione attuale e, se esistente, invalidare il cookie di autenticazione.
 
-	\item[Precondizioni:]
-	L’utente è autenticato.
-
-	\item[Postcondizioni:]
-	L'utente non è autenticato e non possiede cookie di autenticazione validi.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’utente visualizza la funzione di logout attraverso il menu utente.
@@ -128,13 +115,7 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo use case descrive come un utente autenticato consulta le proposte pubblicate e i sondaggi disponibili, applicando criteri di ordinamento e filtraggio.
-
-	\item[Precondizioni:]
-	L’utente è autenticato nella piattaforma.
-
-	\item[Postcondizioni:]
-	Le informazioni visualizzate sono aggiornate in base ai criteri di ordinamento o filtro selezionati.
-
+	
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’utente accede alla sezione ``Proposte" o "Sondaggi''.
@@ -154,7 +135,7 @@
 
 	\item[Estensioni:]~
 	\begin{itemize}
-		\item[(1)] Se non sono presenti proposte o sondaggi attivi, il sistema mostra un messaggio informativo.
+		\item[(0)] L'utente può applicare dei criteri di ordinamento e filtraggio nella visualizzazione di proposte e sondaggi
 	\end{itemize}
 \end{description}
 
@@ -163,12 +144,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo use case descrive come un utente autenticato modifica la lingua dell’interfaccia della piattaforma.
-
-	\item[Precondizioni:]
-	L’utente è autenticato nella piattaforma.
-
-	\item[Postcondizioni:]
-	La lingua selezionata diventa attiva immediatamente e viene salvata nel profilo utente.
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -189,12 +164,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un utente autenticato gestisce le proprie credenziali di accesso e preferenze personali tramite l’area profilo.
 
-	\item[Precondizioni:]
-	L’utente è autenticato nella piattaforma.
-
-	\item[Postcondizioni:]
-	Le modifiche alle credenziali o alle preferenze vengono salvate e risultano effettive per le successive sessioni di accesso.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’utente accede alla sezione ``Profilo'' tramite menu utente.
@@ -208,6 +177,11 @@
 		\end{enumerate}
 		\item Se le modifiche sono valide il sistema le salva. \textbf{[eccezione 3]} \textbf{[eccezione 4]}.
 	\end{enumerate}
+	
+		\item[Estensioni:]~
+	\begin{itemize}
+		\item[(0)] L'utente può aggiornare le proprie credenziali locali (email, username e password) ed aggiornare la propria preferenza in merito alla ricezione delle notifiche.
+	\end{itemize}
 
 	\item[Eccezioni:]~
 	\begin{itemize}
@@ -233,12 +207,6 @@
 	\item[Riassunto:]
 	Questo caso d’uso descrive la procedura di creazione di un nuovo account di tipo moderatore o associazione tramite l’interfaccia amministrativa.
 
-	\item[Precondizioni:]
-	L’amministratore è autenticato e ha i permessi di gestione utenti.
-
-	\item[Postcondizioni:]
-	L’account risulta creato, registrato e notificato via email.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’amministratore accede alla sezione di gestione utenti.
@@ -260,12 +228,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo caso d’uso descrive la pubblicazione di un sondaggio rivolto ai cittadini.
-
-	\item[Precondizioni:]
-	L’amministratore è autenticato e dispone dei permessi di gestione sondaggi.
-
-	\item[Postcondizioni:]
-	Il sondaggio viene pubblicato.
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -293,12 +255,6 @@
 	\item[Riassunto:]
 	Questo caso d’uso descrive l’utilizzo della dashboard amministrativa per consultare, filtrare ed esportare i dati aggregati del sistema.
 
-	\item[Precondizioni:]
-	L’amministratore è autenticato.
-
-	\item[Postcondizioni:]
-	I dati richiesti sono visualizzati o esportati.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’amministratore accede alla dashboard amministrativa.
@@ -318,18 +274,11 @@
 	\includegraphics[scale=1]{img/usecase/Amministratore3.png}
 \end{center}
 
-\subsection{Approvare/rifiutare una proposta}
+\subsection{Modifica stato proposta}
 
 \begin{description}
 	\item[Riassunto:]
 	Questo caso d’uso descrive come l’amministratore esamina una proposta in stato \emph{in valutazione} e decide se approvarla oppure rifiutarla.
-
-	\item[Precondizioni:]
-	La proposta è in stato \emph{in valutazione}.
-
-	\item[Postcondizioni:]
-	La proposta risulta \emph{accettata} oppure \emph{rifiutata}.
-	La motivazione viene resa visibile al pubblico.
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -354,13 +303,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo caso d’uso descrive come l’amministratore redige o aggiorna un report relativo a una proposta, eventualmente modificandone lo stato.
-
-	\item[Precondizioni:]
-	La proposta richiede un report o un suo aggiornamento.
-
-	\item[Postcondizioni:]
-	Il report risulta pubblicato o aggiornato.
-	Lo stato della proposta può essere modificato.
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -614,12 +556,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un’associazione pubblica una proposta collettiva, che viene etichettata come tale dal sistema.
 
-	\item[Precondizioni:]
-	L’associazione è autenticata nel sistema.
-
-	\item[Postcondizioni:]
-	La proposta risulta pubblicata e marcata come \emph{proposta collettiva}.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’associazione accede alla sezione di creazione proposta.
@@ -640,16 +576,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo use case descrive come un’associazione esprime un endorsement digitale su una proposta pubblicata.
-
-	\item[Precondizioni:]~
-	\begin{itemize}
-		\item L’associazione è autenticata.
-		\item La proposta è nello stato \emph{pubblicata}.
-		\item L’associazione non ha già espresso un endorsement su quella proposta.
-	\end{itemize}
-
-	\item[Postcondizioni:]
-	L’endorsement risulta registrato e la proposta è contrassegnata con un’etichetta riportante il nome dell’associazione.
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -672,15 +598,6 @@
 	\item[Riassunto:]
 	Questo use case descrive come un’associazione rimuove un endorsement precedentemente espresso.
 
-	\item[Precondizioni:]~
-	\begin{itemize}
-		\item L’associazione è autenticata.
-		\item L’associazione ha espresso un endorsement su quella proposta.
-	\end{itemize}
-
-	\item[Postcondizioni:]
-	L’endorsement risulta rimosso e l’etichetta non è più visibile sulla proposta.
-
 	\item[Descrizione:]~
 	\begin{enumerate}
 		\item L’associazione accede alla proposta su cui ha espresso endorsement.
@@ -702,13 +619,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo use case descrive come il moderatore analizza contenuti segnalati dai cittadini o rilevati automaticamente dal sistema e decide l’esito della revisione.
-
-	\item[Precondizioni:]
-	Esistono contenuti presenti nella coda di revisione.
-
-	\item[Postcondizioni:]
-	Il contenuto risulta confermato oppure rimosso.
-	Eventuali limitazioni all’autore possono essere applicate (\emph{estensione}~\ref{uc:modlimitazioni}).
 
 	\item[Descrizione:]~
 	\begin{enumerate}
@@ -737,13 +647,6 @@
 \begin{description}
 	\item[Riassunto:]
 	Questo use case descrive come il moderatore interviene autonomamente su contenuti pubblicati senza passare dalla coda di revisione.
-
-	\item[Precondizioni:]
-	Il moderatore è autenticato e ha accesso ai contenuti pubblici.
-
-	\item[Postcondizioni:]
-	Il contenuto risulta confermato o rimosso.
-	Eventuali limitazioni possono essere applicate (\emph{estensione}~\ref{uc:modlimitazioni}).
 
 	\item[Descrizione:]~
 	\begin{enumerate}
