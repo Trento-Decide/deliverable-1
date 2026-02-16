@@ -5,8 +5,8 @@
 \setlength{\parindent}{0pt}
 
 \section{Introduzione}
-I requisiti funzionali definiscono le funzioni che il sistema \emph{Trento Decide} deve offrire per supportare la partecipazione civica, la collaborazione tra cittadini e amministrazione comunale e la trasparenza del processo decisionale.
-Ogni requisito è formulato in modo chiaro e verificabile ed è identificato dal prefisso \textbf{RF}, seguito da un numero progressivo e, ove necessario, da sottosezioni tematiche.
+I requisiti funzionali descrivono con precisione le funzionalità del sistema \emph{Trento Decide}. 
+
 
 \begin{rfscope}
 
@@ -20,6 +20,9 @@ Superata la verifica, il sistema richiede l’inserimento delle credenziali loca
 L’utente può inoltre acconsentire facoltativamente alla ricezione di notifiche via email (abilita/disabilita).
 Il sistema invia un'email di verifica, l'utente ha 10 minuti dalla conferma dei dati per abilitare il proprio account.
 Al termine della procedura, il sistema invia un’email di conferma all’indirizzo fornito.
+
+\subsubsection{Creazione della password} \label{rf:credenziali}
+Il sistema deve verificare che nell'inserimento della credenziale locale "password", la parola inserita soddisfi i requisiti definiti in: \defref{def:credenziali}
 
 \subsection{Registrazione di moderatori e associazioni} \label{rf:registrazionemodass}
 Gli account dei moderatori e delle associazioni/comitati vengono creati dall’amministratore tramite l’interfaccia di gestione dedicata.
@@ -263,7 +266,9 @@ Il sistema deve consentire all’amministratore di aggiornare lo stato di una pr
 In caso di stato \emph{accettata}, il sistema deve permettere il passaggio agli stati \emph{in attuazione} e \emph{completata}.
 In ogni caso il sistema deve consentire all’amministratore di pubblicare un report di valutazione associato alla decisione (\ref{rf:pubblicaportvalutazione}).
 
-\subsection{Pubblicare un report di valutazione} \label{rf:pubblicaportvalutazione}
-Il sistema deve consentire all’amministratore di redigere, aggiornare e pubblicare il report di valutazione associato a una proposta.
+\subsubsection{Pubblicare un report di valutazione} \label{rf:pubblicaportvalutazione}
+Il sistema deve consentire all’amministratore di redigere e pubblicare il report di valutazione associato a una proposta.
+
+
 
 \end{rfscope}

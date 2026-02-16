@@ -7,24 +7,21 @@
 \setlength{\parindent}{0pt}
 
 \section{Introduzione}
-I requisiti non funzionali descrivono le condizioni operative e qualitative che il sistema deve rispettare per rimanere sicuro, efficiente e utilizzabile. Ogni requisito è formulato in modo verificabile e, quando possibile, fa riferimento a valori misurabili o a standard riconosciuti.
+I requisiti non funzionali descrivono delle proprietà da interpretare come parte integrante del sistema. Ogni requisito è formulato in modo verificabile, facendo quando possibile riferimento a requisiti funzionali e/o definizioni correlate.
 
 \begin{rnfscope}
 
 \section{Affidabilità} \label{rnf:affidabilita}
-Il sistema deve garantire una disponibilità annuale del 99,91\%, che corrisponde ad un massimo di circa otto ore di inattività all'anno.
+Il sistema deve garantire una disponibilità annuale del 99,91\%, che corrisponde ad un massimo di circa otto ore di attività interrotta all'anno.
 In caso di interruzione, il ripristino del servizio deve avvenire entro 2 ore (RTO), mentre la perdita massima di dati consentita non può superare le 12 ore (RPO).
-È inoltre necessario prevedere un piano di gestione degli incidenti (incident response) e svolgere test di resilienza ogni sei mesi, includendo simulazioni reali di ripristino.
 
 \section{Anonimato} \label{rnf:anonimato}
-Il sistema deve garantire che tutti i dati utilizzati per la generazione dei report amministrativi (\ref{rf:report}) e per l’analisi dell’attività della piattaforma siano trattati in forma anonimizzata.
-Nessun log, metadato o aggregazione statistica deve permettere l'identificazione diretta o indiretta dell'identità degli utenti, neppure tramite combinazione di più dataset.
-Le procedure di anonimizzazione devono essere applicate prima che i dati siano resi disponibili all’amministrazione o esportabili, assicurando che ogni informazione personale venga rimossa o generalizzata in conformità alle linee guida GDPR\@.
+Il sistema deve garantire che tutti i dati utilizzati per la generazione dei report amministrativi (\ref{rf:report}) siano integralmente anonimizzati.
+Nessun log, dato o aggregazione statistica deve permettere l'identificazione dell'identità degli utenti.
+Le procedure di anonimizzazione vanno applicate nel collezionamento dei dati, in conformità alle linee guida GDPR\@.
 
 \section{Backup e ripristino} \label{rnf:backup}
-Il sistema deve eseguire backup automatici ogni 3 ore di dati, configurazioni applicative e log di sistema. I backup devono essere conservati per almeno 90 giorni e replicati in un data center dell’Unione Europea
-qualificato AgID e geograficamente separato dalla sede principale.
-Devono essere previsti controlli di integrità dei backup, verificando la coerenza dei dati e la loro ripristinabilità, e devono essere svolti test semestrali delle procedure di ripristino.
+Il sistema deve eseguire backup automatici ogni 3 ore dei dati. I backup devono essere conservati per almeno giorni 90 e ospitati in un data center conforme alle linee guida GDPR\@.
 
 \section{Compatibilità} \label{rnf:compatibilita}
 Il sistema deve rispettare gli standard HTML5, CSS3 ed ECMAScript 6 e funzionare correttamente sui browser maggiormente diffusi nella Pubblica Amministrazione e tra gli utenti.
@@ -32,8 +29,11 @@ Il sistema deve rispettare gli standard HTML5, CSS3 ed ECMAScript 6 e funzionare
 L’interfaccia utente deve essere \emph{responsive}, adattandosi a desktop, tablet e smartphone.
 
 \section{Etica e imparzialità del sistema} \label{rnf:etica}
-Il sistema deve garantire trasparenza, equità e neutralità in tutti i processi.
-È necessario prevenire l’introduzione di bias politici, ideologici o sociali, che possono derivare dalla logica applicativa o da un uso scorretto degli strumenti da parte degli utenti (cfr.~\ref{rf:moderazioneutenti}). Tali principi riguardano esclusivamente il funzionamento della piattaforma e non limitano l’espressione degli utenti.
+Il sistema deve garantire equità e neutralità nella totalità dei processi coinvolti in esso.
+Prevenendo l'introduzione di bias politici o ideologici.
+L'unica fonte di derivazione prevista di tali problematiche è l'utilizzo scorretto della piattaforma da parte di utenti (cfr.~\ref{rf:moderazioneutenti}).
+Tali principi non devono limitare la libera espressione degli utenti.
+
 
 \section{Internazionalizzazione e lingua} \label{rnf:lingua}
 Il sistema deve supportare almeno le seguenti lingue: Italiano, Inglese, Tedesco, Arabo (RTL) e Rumeno.
@@ -41,12 +41,12 @@ La lingua dell’interfaccia deve essere selezionabile e persistente a livello d
 I contenuti generati dagli utenti devono rimanere nella lingua di origine, con la possibilità di tradurre automaticamente il contenuto a solo scopo informativo, quest'ultima deve essere chiaramente segnalata tramite interfaccia utente.
 
 \section{Moderazione e correttezza d’uso} \label{rnf:moderazione}
-Il sistema deve garantire un ambiente rispettoso tramite strumenti di moderazione dei contenuti e delle interazioni tra utenti.
+Il sistema deve garantire rispetto nelle interazioni degli utenti, attraverso la moderazione.
 Le segnalazioni devono essere prese in carico entro 24 ore dalla loro ricezione.
 Ogni intervento di moderazione deve essere tracciato (utente, data/ora, motivazione) in un log non alterabile.
 
 \section{Moderazione automatica} \label{rnf:moderazioneautomatica}
-La moderazione automatica (si veda~\ref{rf:moderazioneautomatica}) deve limitarsi all’oscuramento temporaneo e alla segnalazione, senza rimozioni definitive.  I criteri d'intervento devono essere imparziali, scattando esclusivamente a tutela degli utenti contro contenuti gravemente offensivi, senza intaccare la libera espressione del cittadino.
+La moderazione automatica (si veda~\ref{rf:moderazioneautomatica}) deve limitarsi all’oscuramento temporaneo e alla segnalazione, senza rimozioni definitive.  I criteri d'intervento devono essere imparziali, scattando esclusivamente a tutela degli utenti contro contenuti gravemente offensivi o volgari, senza intaccare la libera espressione degli utenti.
 
 \section{Performance} \label{rnf:performance}
 Il sistema deve garantire che il 95\% delle operazioni principali (autenticazione, consultazione dei contenuti, espressione del voto) sia completato entro 1 secondo.
@@ -63,13 +63,14 @@ Il sistema deve supportare la scalabilità orizzontale e verticale senza downtim
 L’architettura deve permettere l’aggiunta di nuove istanze di servizio e la gestione di carichi concorrenti elevati.
 
 \section{Sicurezza} \label{rnf:sicurezza}
-Il sistema deve seguire il paradigma \emph{security by design}, implementando i meccanismi necessari per proteggere i dati
-e le funzionalità del sistema contro minacce comuni e accessi non autorizzati.
-Tutte le comunicazioni devono essere cifrate tramite protocolli sicuri (es. TLS 1.2 o superiore) e i dati sensibili
-devono essere protetti tramite tecniche di hashing o cifratura a riposo.
+Il sistema deve seguire il paradigma \emph{security by design}, implementando quindi dalla progettazione funzionalità necessarie alla protezione dalle minacce comuni.
+Le comunicazioni saranno cifrate tramite protocollo TLS 1.2, i dati sensibili devono essere protetti tramite tecniche di hashing.
 Devono essere previste contromisure contro attacchi applicativi frequenti, come XSS, CSRF, SQL injection e tentativi
-di bruteforce (OWASP Top 10).
-È inoltre richiesto un aggiornamento periodico delle componenti software e una revisione di sicurezza annuale, nel rispetto delle normative vigenti e del GDPR\@.
+di bruteforce.
+È inoltre richiesto un allineamento periodico delle misure di sicurezza in risposta alle minacce relative all'evolversi del software, nel rispetto delle normative vigenti e del GDPR\@.
+
+\subsection{Credenziali} \label{rnf:credenziali}
+Il sistema deve garantire che le credenziali di ogni utente siano robuste a tentativi di bruteforce, implementando requisiti specifici nel formato di ciascun oggetto relativo ad esse (\ref{rf:credenziali}). 
 
 \section{Usabilità e accessibilità} \label{rnf:useacc}
 Il sistema deve essere utilizzabile senza alcun tipo di formazione per gli utenti esterni; il training per operatori interni non deve eccedere i 45 minuti.
